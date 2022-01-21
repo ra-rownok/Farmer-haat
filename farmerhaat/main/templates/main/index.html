@@ -1,0 +1,216 @@
+{% load static %} {% block meta %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<title>Farmer Haat</title>
+
+{% include 'main/partials/navbar.html' %} {% endblock %} {% block body %}
+
+<style>
+    .banner {
+        background-image: url("https://wfuna.org/files/image/page/farmer_of_bangladesh.jpg");
+        background-position: 50% 0%;
+        background-size: cover;
+        color: hsl(210, 11%, 15%);
+        gap: normal;
+        line-height: 60px;
+        margin: 0px 0px 20px;
+        padding: 30px 0px;
+        text-align: left;
+    }
+    
+    h1 {
+        color: hsl(0, 0%, 100%);
+        font-size: 26px;
+        font-weight: 700;
+        gap: normal;
+        line-height: 30px;
+        margin: 0px 0px 8px;
+        padding: 60px 0px 20px;
+        text-align: left;
+    }
+    
+    .banner-sub-title {
+        color: hsl(0, 0%, 100%);
+        font-size: 16px;
+        gap: normal;
+        line-height: 20px;
+        margin: 0px 0px 16px;
+        padding: 10px 0px 0px;
+        text-align: left;
+    }
+    
+    
+    .col-md-12 {
+        color: hsl(210, 11%, 15%);
+        flex-basis: 100%;
+        gap: normal;
+        line-height: 24px;
+        padding: 0px 15px;
+        text-align: center;
+    }
+    
+    .col-lg-7 {
+        color: hsl(210, 11%, 15%);
+        flex-basis: 58.3333%;
+        gap: normal;
+        line-height: 24px;
+        padding: 0px 15px;
+        text-align: left;
+    }
+    
+    a {
+        display: inline;
+        font-size: 14px;
+        gap: normal;
+        line-height: 21px;
+        text-align: center;
+    }
+    
+    img {
+        color: hsl(211, 100%, 35%);
+        display: inline;
+        gap: normal;
+        line-height: 24px;
+        text-align: left;
+    }
+    
+    .col-12.col-md-4.col-lg-4.text-center {
+        color: hsl(210, 11%, 15%);
+        flex-basis: 33.3333%;
+        gap: normal;
+        line-height: 24px;
+        padding: 0px 10px;
+        text-align: center;
+        margin-left: 10px;
+    }
+    
+    .features {
+        border-width: 0px 0px 3px;
+        box-shadow: hsl(227, 17%, 90%) 0px 0px 8px 2px;
+        color: hsl(210, 11%, 15%);
+        gap: normal;
+        line-height: 24px;
+        padding: 25px;
+        text-align: center;
+    }
+    
+    .paraText {
+        color: hsl(210, 11%, 15%);
+        gap: normal;
+        line-height: 24px;
+        margin: 32px 0px 16px;
+        text-align: center;
+    }
+    
+    .form-group {
+        width: 300px;
+        height: auto;
+        margin-left: 10px;
+    }
+    
+    .box {
+        border: 1px solid black;
+        box-sizing: border-box;
+    }
+    
+    button .update {
+        margin-left: 30px;
+    }
+    
+    .card a {
+        text-decoration: none;
+    }
+    
+    .card {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 14px;
+        font-style: initial;
+    }
+    
+    .features:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+    }
+
+</style>
+
+<div class="banner" data-selected="true" data-label-id="0" data-metatip="true">
+    {% include 'main/partials/navbar.html' %} <br><br>
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-lg-7 mr-4  mb-5">
+                <h1>কৃষকের বাজার <br>(Farmer Haat)</h1>
+                <p class="banner-sub-title">সতেজ খান, সুস্থ থাকুন। </p>
+            </div>
+
+            <div class="col-lg-4 ml-5">
+
+                {% if user.is_authenticated %}
+                <div class="card bg-transparent border-radius box ml-5 " style="width: 18rem;">
+                    <div class="card-body text-black">
+                        <h5 class="card-title">Name: {{user.first_name}} {{user.last_name}}</h5>
+                        <h6 class="card-subtitle mb-3 ">Profession: {{request.user.profile.profession}}</h6>
+                        <h6 class="card-subtitle mb-3 ">Gender: {{request.user.profile.gender}}</h6>
+                        <h6 class="card-subtitle mb-3 ">Phone Number: {{request.user.profile.contact}}</h6>
+
+                        <button type="button" class="btn btn-outline-primary  update"><a href="{% url 'update' %}" class="text-white">Update</a></button>
+
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row whatsnew blockPoints">
+
+        <div class=" col-md-4 col-lg-4 text-center">
+            <div class="features">
+                <a href="{% url 'productlist' %}"><img class="iconImg" src="https://resources.tallysolutions.com/bd/en/wp-content/uploads/free-trial/images/browser-support.jpg" height="70px"> </a>
+                <p class="paraText">Product List
+                </p>
+            </div>
+        </div>
+
+        <div class=" col-md-4 col-lg-4 text-center ">
+            <div class="features ">
+                <a href="{% url 'farmerlist' %}"><img class="iconImg" src="https://resources.tallysolutions.com/bd/en/wp-content/uploads/free-trial/images/business-info.jpg" height="70px"></a>
+                <p class="paraText">Farmer Information</p>
+            </div>
+        </div>
+
+        <div class=" col-md-4 col-lg-4 text-center">
+            <div class="features">
+                <a href="{% url 'orderlist' %}"> <img class="iconImg" src="https://resources.tallysolutions.com/bd/en/wp-content/uploads/free-trial/images/gst-invoice.jpg" height="70px"> </a>
+                <p class="paraText">Track Order</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <div class="container">
+    <div class="row ">
+        <div class="col-12 col-md-4 col-lg-4 text-center">
+            <div class="features">
+                <img class="iconImg" src="https://resources.tallysolutions.com/bd/en/wp-content/uploads/free-trial/images/track-payments.jpg" alt="track overdue payments">
+                <p class="paraText">Quick track your outstanding and send reminder letters for overdue payments</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-4 text-center">
+            <div class="features">
+                <img class="iconImg" src="https://resources.tallysolutions.com/bd/en/wp-content/uploads/free-trial/images/reconcile-bank-accounts.jpg" alt="Reconcile bank accounts">
+                <p class="paraText">Automatically reconcile bank statements with books of accounts</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-4 text-center">
+            <div class="features">
+                <img class="iconImg" src="https://resources.tallysolutions.com/bd/en/wp-content/uploads/free-trial/images/financial-statement.png" alt="Generate financial statements">
+                <p class="paraText">Generate financial statements instantly</p>
+            </div>
+        </div>
+    </div>
+</div> -->
+{% include 'main/partials/footer.html' %} {% endblock %}
