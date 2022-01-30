@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from main import views as main_views
 from account import views as account_views 
 
@@ -15,4 +17,4 @@ urlpatterns = [
     path('farmer/',main_views.farmer,name='farmerlist'),
     path('productlist/',main_views.product_list,name='productlist'),
     path('orderlist/',main_views.order_list,name='orderlist'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
