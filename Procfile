@@ -1,1 +1,1 @@
-web: gunicorn farmerhaat.wsgi --log-file - 
+web: gunicorn farmerhaat.wsgi
